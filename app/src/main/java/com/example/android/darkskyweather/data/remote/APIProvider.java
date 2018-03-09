@@ -15,6 +15,7 @@ public class APIProvider {
 
     private static final String BASE_URL = "https://api.darksky.net/";
     private static final String API_KEY ="3115e1b5ecf87a70477ab1b50dca629a";
+
     private static Retrofit create(){
 
         return new Retrofit.Builder()
@@ -22,9 +23,10 @@ public class APIProvider {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }
-    public static Call<WeatherInformation> getWeatherCall(){
+    public static Call<WeatherInformation> getWeatherCall(double lat, double lng){
         Retrofit retrofit = create();
         APIServices services = retrofit.create(APIServices.class);
-        return services.weatherCall(API_KEY, 117.1611,32.7157);//San Diego coordinates
+        return services.weatherCall(API_KEY, lat, lng);//San Diego coordinates
+
     }
 }

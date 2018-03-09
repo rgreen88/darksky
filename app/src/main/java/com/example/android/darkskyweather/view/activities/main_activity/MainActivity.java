@@ -24,12 +24,17 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     private List<DailyDatum> weatherList = new ArrayList<>();
     private WeatherAdapter weatherAdapter;
 
+    //lat long coordinates San Diego
+    double lat = 117.1611;
+    double lng = 32.7157;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         setupDagger();
+
 
         ImageView icon = findViewById(R.id.iv_condition);
         TextView city = findViewById(R.id.tv_city);
@@ -67,6 +72,6 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
     @Override
     public void showDetailedInformation() {
-
+        presenter.getWeatherInformation(lat, lng);
     }
 }

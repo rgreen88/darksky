@@ -1,5 +1,7 @@
 package com.example.android.darkskyweather.view.activities.main_activity;
 
+import com.example.android.darkskyweather.data.remote.APIProvider;
+
 /**
  * Created by rynel on 3/8/2018.
  */
@@ -20,6 +22,6 @@ public class MainPresenter implements MainContract.Presenter{
 
     @Override
     public void getWeatherInformation(double lat, double lng) {
-        //retrofit call
+        APIProvider.getWeatherCall(lat, lng);
     }
 }
