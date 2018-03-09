@@ -9,9 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.example.android.darkskyweather.R;
 import com.example.android.darkskyweather.model.DailyDatum;
@@ -48,8 +46,8 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         setupDagger();
 
 
-        ImageView icon = findViewById(R.id.iv_condition);
-        TextView city = findViewById(R.id.tv_city);
+        ImageView icon = findViewById(R.id.iv_icon);
+//        TextView city = findViewById(R.id.tv_city);
         weatherView = findViewById(R.id.rv_weather);
 
         //RecyclerView LinearLayoutManager
@@ -102,11 +100,11 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         unregisterReceiver(myReceiver);
     }
 
-    public void ReceiveMe(View view) {
-
-        Intent intent = new Intent("weather");
-        sendBroadcast(intent);
-    }
+//    public void ReceiveMe(View view) {
+//
+//        Intent intent = new Intent("weather");
+//        sendBroadcast(intent);
+//    }
 
 
     class MyReceiver extends BroadcastReceiver {

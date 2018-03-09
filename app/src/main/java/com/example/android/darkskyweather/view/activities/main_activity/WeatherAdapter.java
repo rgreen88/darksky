@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.android.darkskyweather.R;
@@ -39,7 +39,7 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, int position) {
         final DailyDatum datum = dailyDatums.get(position);
 
         String high = "High: " + datum.getTemperatureHigh();
@@ -59,7 +59,7 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
                 Intent intent = new Intent();
                 Gson gson = new Gson(); //converting gson object to string
                 intent.putExtra("weather", gson.toJson(datum));
-               // holder.itemView.getContext().startActivity(intent, );
+                holder.itemView.getContext().sendBroadcast(intent);
             }
         });
 
@@ -78,17 +78,17 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
         TextView low;
         TextView humidity;
         TextView dewPoint;
-        LinearLayout container;
+        RelativeLayout container;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
-            icon = itemView.findViewById(R.id.iv_condition);
+            icon = itemView.findViewById(R.id.iv_icon);
             high = itemView.findViewById(R.id.tv_high);
             low = itemView.findViewById(R.id.tv_low);
             humidity = itemView.findViewById(R.id.tv_humidity);
             dewPoint = itemView.findViewById(R.id.tv_dew_point);
-            container = itemView.findViewById(R.id.layout_linear);
+            container = itemView.findViewById(R.id.layout_relative);
         }
     }
 }
