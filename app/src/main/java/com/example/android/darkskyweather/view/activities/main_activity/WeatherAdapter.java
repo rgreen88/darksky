@@ -56,7 +56,7 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
         holder.container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
+                Intent intent = new Intent("weather");
                 Gson gson = new Gson(); //converting gson object to string
                 intent.putExtra("weather", gson.toJson(datum));
                 holder.itemView.getContext().sendBroadcast(intent);
