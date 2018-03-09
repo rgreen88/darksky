@@ -1,10 +1,15 @@
 package com.example.android.darkskyweather.view.activities.main_activity;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,6 +28,13 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     RecyclerView.ItemAnimator itemAnimator;
     private List<DailyDatum> weatherList = new ArrayList<>();
     private WeatherAdapter weatherAdapter;
+
+    //IntentFilter for broadcast receiver
+    IntentFilter intentFilter = new IntentFilter("weather");
+
+    //setting up receiver
+    MyReceiver myReceiver = new MyReceiver();
+
 
     //lat long coordinates San Diego
     double lat = 117.1611;
@@ -73,5 +85,37 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     @Override
     public void showDetailedInformation() {
         presenter.getWeatherInformation(lat, lng);
+    }
+
+    //registering and unregistering receiver
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        registerReceiver(myReceiver, intentFilter);
+    }
+
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        unregisterReceiver(myReceiver);
+    }
+
+    public void ReceiveMe(View view) {
+
+        Intent intent = new Intent("weather");
+        sendBroadcast(intent);
+    }
+
+
+    class MyReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+            showDetailedInformation();
+
+        }
     }
 }
