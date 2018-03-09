@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.android.darkskyweather.R;
@@ -114,12 +115,16 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         unregisterReceiver(myReceiver);
     }
 
+    public void getRefresh(View view) {
+        presenter.getWeatherInformation(32.7157, 117.1611);
+    }
+
     class MyReceiver extends BroadcastReceiver {
 
         @Override
         public void onReceive(Context context, Intent intent) {
 
-            Toast.makeText(context, "Click", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(context, "Click", Toast.LENGTH_SHORT).show();
             showDetailedInformation(intent.getStringExtra("weather"));
 
         }
