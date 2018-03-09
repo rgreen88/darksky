@@ -1,5 +1,5 @@
 
-package com.example.android.darkskyweather.model;
+package com.helpmeproductions.willus08.darksky.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

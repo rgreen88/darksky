@@ -1,5 +1,5 @@
 
-package com.example.android.darkskyweather.model;
+package com.helpmeproductions.willus08.darksky.model;
 
 import java.util.List;
 import com.google.gson.annotations.Expose;
@@ -15,7 +15,7 @@ public class Hourly {
     private String icon;
     @SerializedName("data")
     @Expose
-    private List<Datum_> data = null;
+    private List<HourlyDatum> data = null;
 
     public String getSummary() {
         return summary;
@@ -33,11 +33,11 @@ public class Hourly {
         this.icon = icon;
     }
 
-    public List<Datum_> getData() {
+    public List<HourlyDatum> getData() {
         return data;
     }
 
-    public void setData(List<Datum_> data) {
+    public void setData(List<HourlyDatum> data) {
         this.data = data;
     }
 

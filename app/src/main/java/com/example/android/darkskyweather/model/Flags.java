@@ -1,10 +1,9 @@
 
-package com.example.android.darkskyweather.model;
-
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
+package com.helpmeproductions.willus08.darksky.model;
 
 import java.util.List;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
 public class Flags {
 

@@ -1,5 +1,5 @@
 
-package com.example.android.darkskyweather.model;
+package com.helpmeproductions.willus08.darksky.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -8,7 +8,7 @@ public class Currently {
 
     @SerializedName("time")
     @Expose
-    private Integer time;
+    private Double time;
     @SerializedName("summary")
     @Expose
     private String summary;
@@ -17,16 +17,16 @@ public class Currently {
     private String icon;
     @SerializedName("nearestStormDistance")
     @Expose
-    private Integer nearestStormDistance;
+    private Double nearestStormDistance;
     @SerializedName("nearestStormBearing")
     @Expose
-    private Integer nearestStormBearing;
+    private Double nearestStormBearing;
     @SerializedName("precipIntensity")
     @Expose
-    private Integer precipIntensity;
+    private Double precipIntensity;
     @SerializedName("precipProbability")
     @Expose
-    private Integer precipProbability;
+    private Double precipProbability;
     @SerializedName("temperature")
     @Expose
     private Float temperature;
@@ -50,13 +50,13 @@ public class Currently {
     private Float windGust;
     @SerializedName("windBearing")
     @Expose
-    private Integer windBearing;
+    private Double windBearing;
     @SerializedName("cloudCover")
     @Expose
     private Float cloudCover;
     @SerializedName("uvIndex")
     @Expose
-    private Integer uvIndex;
+    private Double uvIndex;
     @SerializedName("visibility")
     @Expose
     private Float visibility;
@@ -64,11 +64,11 @@ public class Currently {
     @Expose
     private Float ozone;
 
-    public Integer getTime() {
+    public Double getTime() {
         return time;
     }
 
-    public void setTime(Integer time) {
+    public void setTime(Double time) {
         this.time = time;
     }
 
@@ -88,35 +88,35 @@ public class Currently {
         this.icon = icon;
     }
 
-    public Integer getNearestStormDistance() {
+    public Double getNearestStormDistance() {
         return nearestStormDistance;
     }
 
-    public void setNearestStormDistance(Integer nearestStormDistance) {
+    public void setNearestStormDistance(Double nearestStormDistance) {
         this.nearestStormDistance = nearestStormDistance;
     }
 
-    public Integer getNearestStormBearing() {
+    public Double getNearestStormBearing() {
         return nearestStormBearing;
     }
 
-    public void setNearestStormBearing(Integer nearestStormBearing) {
+    public void setNearestStormBearing(Double nearestStormBearing) {
         this.nearestStormBearing = nearestStormBearing;
     }
 
-    public Integer getPrecipIntensity() {
+    public Double getPrecipIntensity() {
         return precipIntensity;
     }
 
-    public void setPrecipIntensity(Integer precipIntensity) {
+    public void setPrecipIntensity(Double precipIntensity) {
         this.precipIntensity = precipIntensity;
     }
 
-    public Integer getPrecipProbability() {
+    public Double getPrecipProbability() {
         return precipProbability;
     }
 
-    public void setPrecipProbability(Integer precipProbability) {
+    public void setPrecipProbability(Double precipProbability) {
         this.precipProbability = precipProbability;
     }
 
@@ -176,11 +176,11 @@ public class Currently {
         this.windGust = windGust;
     }
 
-    public Integer getWindBearing() {
+    public Double getWindBearing() {
         return windBearing;
     }
 
-    public void setWindBearing(Integer windBearing) {
+    public void setWindBearing(Double windBearing) {
         this.windBearing = windBearing;
     }
 
@@ -192,11 +192,11 @@ public class Currently {
         this.cloudCover = cloudCover;
     }
 
-    public Integer getUvIndex() {
+    public Double getUvIndex() {
         return uvIndex;
     }
 
-    public void setUvIndex(Integer uvIndex) {
+    public void setUvIndex(Double uvIndex) {
         this.uvIndex = uvIndex;
     }
 
