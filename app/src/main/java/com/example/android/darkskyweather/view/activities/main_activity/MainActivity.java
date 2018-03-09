@@ -95,8 +95,12 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     }
 
     @Override
-    public void showDetailedInformation() {
-        presenter.getWeatherInformation(lat, lng);
+    public void showDetailedInformation(String information) {
+
+        Intent intent = new Intent(this, ExtendedWeather.class);
+        intent.putExtra("weather", information);
+        this.startActivity(intent);
+
     }
 
     //registering and unregistering receiver
@@ -127,8 +131,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         public void onReceive(Context context, Intent intent) {
 
             Toast.makeText(context, "Click", Toast.LENGTH_SHORT).show();
-            showDetailedInformation();
-
+            showDetailedInformation(intent.getStringExtra("weather"));
 
         }
     }
