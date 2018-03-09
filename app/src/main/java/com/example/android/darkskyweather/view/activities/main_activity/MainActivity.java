@@ -9,7 +9,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.darkskyweather.R;
@@ -33,6 +36,9 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     private List<DailyDatum> weatherList = new ArrayList<>();
     private WeatherAdapter weatherAdapter;
 
+    //TextView hyperlink
+    TextView credit;
+
     //IntentFilter for broadcast receiver
     IntentFilter intentFilter = new IntentFilter("weather");
 
@@ -53,11 +59,18 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
         //populate view
         presenter.addView(this);
-
         weatherView = findViewById(R.id.rv_weather);
+
         //retrieve weather info
         presenter.getWeatherInformation(lat, lng);
 
+        //bind hyperlink textview to tv id
+        credit = findViewById(R.id.tv_credit);
+
+        credit.setText(
+                Html.fromHtml(
+                        "<a href=\"https://darksky.net/poweredby/\">Powered by Dark Sky</a> "));
+        credit.setMovementMethod(LinkMovementMethod.getInstance());
 
 
     }
