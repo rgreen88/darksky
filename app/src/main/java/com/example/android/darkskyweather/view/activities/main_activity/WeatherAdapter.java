@@ -46,11 +46,13 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
         String low = "Low: " + datum.getTemperatureLow();
         String humidity = "Humidity: " + datum.getHumidity();
         String dewPoint = "Dew Point: " + datum.getDewPoint();
+        String condition = datum.getIcon();
 
         holder.high.setText(high);
         holder.low.setText(low);
         holder.humidity.setText(humidity);
         holder.dewPoint.setText(dewPoint);
+        holder.condition.setText(condition);
 
         //setting onClickListener in adapter
         holder.container.setOnClickListener(new View.OnClickListener() {
@@ -78,6 +80,7 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
         TextView low;
         TextView humidity;
         TextView dewPoint;
+        TextView condition;
         RelativeLayout container;
 
         public ViewHolder(View itemView) {
@@ -88,6 +91,7 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
             low = itemView.findViewById(R.id.tv_low);
             humidity = itemView.findViewById(R.id.tv_humidity);
             dewPoint = itemView.findViewById(R.id.tv_dew_point);
+            condition = itemView.findViewById(R.id.tv_condition);
             container = itemView.findViewById(R.id.layout_relative);
         }
     }
