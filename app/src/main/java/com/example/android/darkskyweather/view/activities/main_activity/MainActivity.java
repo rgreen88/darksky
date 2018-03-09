@@ -22,7 +22,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-public class MainActivity extends AppCompatActivity implements MainContract.View{ // you need to add .View to this
+public class MainActivity extends AppCompatActivity implements MainContract.View{
 
     // remember this next time
     @Inject MainPresenter presenter;
@@ -91,6 +91,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
     }
 
+    //pushing information from DailyDatum to ExtendedWeather Activity
     @Override
     public void showDetailedInformation(String information) {
 
@@ -108,23 +109,23 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         registerReceiver(myReceiver, intentFilter);
     }
 
-
     @Override
     protected void onStop() {
         super.onStop();
         unregisterReceiver(myReceiver);
     }
 
+    //refresh button
     public void getRefresh(View view) {
         presenter.getWeatherInformation(32.7157, 117.1611);
     }
 
+    //weather as string reference to broadcast
     class MyReceiver extends BroadcastReceiver {
 
         @Override
         public void onReceive(Context context, Intent intent) {
 
-//            Toast.makeText(context, "Click", Toast.LENGTH_SHORT).show();
             showDetailedInformation(intent.getStringExtra("weather"));
 
         }

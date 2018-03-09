@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class APIProvider {
     private static final String BASE_URL = "https://api.darksky.net/";
-    private static final String API_KEY ="3115e1b5ecf87a70477ab1b50dca629a";
+    private static final String API_KEY ="3115e1b5ecf87a70477ab1b50dca629a"; //secret key
     private static Retrofit create(){
 
         return new Retrofit.Builder()

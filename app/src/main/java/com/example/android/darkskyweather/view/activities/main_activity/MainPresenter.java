@@ -36,7 +36,7 @@ public class MainPresenter implements MainContract.Presenter{
             @Override
             public void onResponse(@NonNull Call<WeatherInformation> call, @NonNull Response<WeatherInformation> response) {
                 Log.d(TAG, "onResponse: " + response.body());
-                view.setupAdapter(response.body()); //passing WeatherInformation using body()
+                view.setupAdapter(response.body()); //passing WeatherInformation using body() into adapter
             }
 
             @Override
