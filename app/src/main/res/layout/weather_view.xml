@@ -4,12 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="@dimen/cardview_default_radius"
+    app:cardElevation="@dimen/cardview_default_elevation"
     tools:context="com.example.android.darkskyweather.view.activities.main_activity.MainActivity">
 
     <RelativeLayout
         android:id="@+id/layout_relative"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <ImageView
@@ -22,34 +25,31 @@
             android:id="@+id/tv_high"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="57dp"
-            android:layout_marginStart="57dp"
+            android:layout_margin="8dp"
             android:layout_toEndOf="@+id/iv_icon"
             android:layout_toRightOf="@+id/iv_icon"
-            android:text="high"
+            android:text="textView"
             android:textSize="20sp" />
 
         <TextView
             android:id="@+id/tv_low"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/tv_high"
-            android:layout_alignRight="@+id/tv_high"
-            android:layout_below="@+id/tv_high"
+            android:layout_below="@id/tv_high"
+            android:layout_margin="8dp"
+            android:layout_toEndOf="@+id/iv_icon"
+            android:layout_toRightOf="@+id/iv_icon"
             android:text="TextView"
             android:textSize="20sp" />
 
         <TextView
             android:id="@+id/tv_humidity"
+            android:layout_margin="8dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/tv_low"
-            android:layout_marginLeft="54dp"
-            android:layout_marginStart="54dp"
-            android:layout_marginTop="40dp"
-            android:layout_toEndOf="@+id/tv_high"
-            android:layout_toRightOf="@+id/tv_high"
+            android:layout_below="@id/tv_dew_point"
+            android:layout_toEndOf="@+id/tv_low"
+            android:layout_toRightOf="@+id/tv_low"
             android:text="TextView"
             android:textSize="20sp" />
 
@@ -57,10 +57,11 @@
             android:id="@+id/tv_dew_point"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/tv_high"
+            android:layout_alignBottom="@+id/tv_high"
             android:layout_alignLeft="@+id/tv_humidity"
-            android:layout_alignParentTop="true"
             android:layout_alignStart="@+id/tv_humidity"
-            android:layout_marginTop="8dp"
+            android:layout_margin="8dp"
             android:text="TextView"
             android:textSize="20sp" />
 

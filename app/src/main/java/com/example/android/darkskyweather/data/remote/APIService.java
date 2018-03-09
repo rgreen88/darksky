@@ -1,7 +1,7 @@
-package com.helpmeproductions.willus08.darksky.data.remote;
+package com.example.android.darkskyweather.data.remote;
 
 
-import com.helpmeproductions.willus08.darksky.model.WeatherInformation;
+import com.example.android.darkskyweather.model.WeatherInformation;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
