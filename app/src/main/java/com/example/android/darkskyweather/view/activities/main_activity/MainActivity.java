@@ -23,7 +23,7 @@ import javax.inject.Inject;
 
 public class MainActivity extends AppCompatActivity implements MainContract.View{ // you need to add .View to this
 
-    // remeber this next time
+    // remember this next time
     @Inject MainPresenter presenter;
 
     private RecyclerView weatherView;
@@ -74,10 +74,6 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     //method setting up recyclerview
     @Override
     public void setupAdapter(WeatherInformation information) {
-        //RecyclerView LinearLayoutManager
-//        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-//        weatherView.setLayoutManager(layoutManager);
-//        weatherView.setHasFixedSize(true);
 
         manager = new LinearLayoutManager(this);
         itemAnimator = new DefaultItemAnimator();
@@ -117,13 +113,6 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         super.onStop();
         unregisterReceiver(myReceiver);
     }
-
-//    public void ReceiveMe(View view) {
-//
-//        Intent intent = new Intent("weather");
-//        sendBroadcast(intent);
-//    }
-
 
     class MyReceiver extends BroadcastReceiver {
 
