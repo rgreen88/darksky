@@ -36,7 +36,7 @@
             android:layout_margin="16dp"
             android:layout_toEndOf="@+id/iv_icon"
             android:layout_toRightOf="@+id/iv_icon"
-            android:text="textView"
+            android:text="TextView"
             android:textSize="12sp" />
 
         <TextView
@@ -53,12 +53,12 @@
 
         <TextView
             android:id="@+id/tv_humidity"
-            android:layout_margin="8dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tv_dew_point"
-            android:layout_toEndOf="@+id/tv_low"
-            android:layout_toRightOf="@+id/tv_low"
+            android:layout_alignBaseline="@+id/tv_low"
+            android:layout_alignBottom="@+id/tv_low"
+            android:layout_toEndOf="@+id/tv_high"
+            android:layout_toRightOf="@+id/tv_high"
             android:text="TextView"
             android:textSize="12sp" />
 
@@ -67,10 +67,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/tv_high"
-            android:layout_alignBottom="@+id/tv_high"
             android:layout_alignLeft="@+id/tv_humidity"
             android:layout_alignStart="@+id/tv_humidity"
-            android:layout_margin="8dp"
             android:text="TextView"
             android:textSize="12sp" />
 
