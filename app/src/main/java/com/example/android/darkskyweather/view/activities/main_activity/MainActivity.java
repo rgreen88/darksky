@@ -91,6 +91,8 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
         manager = new LinearLayoutManager(this);
         itemAnimator = new DefaultItemAnimator();
+
+        //new dailydatum object pulling data from Currently to display current day
         DailyDatum dailyDatum = new DailyDatum(
                 information.getCurrently().getIcon(),
                 information.getCurrently().getTemperature(),
