@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.example.android.darkskyweather.R;
 import com.example.android.darkskyweather.model.DailyDatum;
 import com.google.gson.Gson;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,20 +48,39 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
         String humidity = "Humidity: " + datum.getHumidity();
         String dewPoint = "Dew Point: " + datum.getDewPoint();
         String condition = datum.getIcon();
-        ImageView icon;
-//        Drawable myDrawable = icon.getDrawable();
 
         holder.high.setText(high);
         holder.low.setText(low);
         holder.humidity.setText(humidity);
         holder.dewPoint.setText(dewPoint);
         holder.condition.setText(condition);
-//        holder.icon.setImageDrawable(icon);
 
-        //setting condition to determine which image to load into iv
-//        if(icon.getDrawable().equals(condition) ){
-//            //do work here
-//        }
+
+        //setting images from mipmap via picasso and if/else statements
+        if(datum.getIcon() == null){
+            if(datum.getIcon().toLowerCase().contains("part")){
+                Picasso.with(holder.itemView.getContext())
+                        .load(R.mipmap.partly_cloudy)
+                        .into(holder.icon);
+            }else if(datum.getIcon().toLowerCase().contains("cloud")){
+                Picasso.with(holder.itemView.getContext())
+                        .load(R.mipmap.cloudy)
+                        .into(holder.icon);
+            }else if(datum.getIcon().toLowerCase().contains("snow")){
+                Picasso.with(holder.itemView.getContext())
+                        .load(R.mipmap.snow)
+                        .into(holder.icon);
+            }else if(datum.getIcon().toLowerCase().contains("rain")){
+                Picasso.with(holder.itemView.getContext())
+                        .load(R.mipmap.rainy)
+                        .into(holder.icon);
+            }else {
+                Picasso.with(holder.itemView.getContext())
+                        .load(R.mipmap.sunny)
+                        .into(holder.icon);
+
+            }
+        }
 
         //setting onClickListener in adapter
         holder.container.setOnClickListener(new View.OnClickListener() {
@@ -94,7 +114,7 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
         public ViewHolder(View itemView) {
             super(itemView);
 
-            icon = itemView.findViewWithTag(R.drawable.cloudy);
+            icon = itemView.findViewWithTag(R.id.iv_icon);
             high = itemView.findViewById(R.id.tv_high);
             low = itemView.findViewById(R.id.tv_low);
             humidity = itemView.findViewById(R.id.tv_humidity);

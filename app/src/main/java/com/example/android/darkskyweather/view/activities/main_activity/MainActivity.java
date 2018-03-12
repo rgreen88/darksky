@@ -60,15 +60,14 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         setupDagger();
 
 
-        //lat long coordinates San Diego
-//        double lng = 117.1611;
-//        double lat = 32.7157;
-//        presenter.getWeatherInformation(lat, lng);
-
-
         //populate view
         presenter.addView(this);
         weatherView = findViewById(R.id.rv_weather);
+
+        //lat long coordinates San Diego at start of app
+        double lng = 117.1611;
+        double lat = 32.7157;
+        presenter.getWeatherInformation(lat, lng);
 
         //retrieve weather info
         //presenter.getWeatherInformation(lat, lng);
@@ -163,7 +162,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     //using edittext to set lat/lng to desired search
     public void getCoodinates(View view) {
         //conditional statement to check lat/lng values and calls to search for weather info
-        // by input lat/lng and converts string to double
+        // by input lat/lng and converts string to double. Adds error toasts for specific errors
         if (!et_lat.getText().toString().equals("") && !et_lng.getText().toString().equals("")) {
             double lat = Double.parseDouble(et_lat.getText().toString());
             double lng = Double.parseDouble(et_lng.getText().toString());
@@ -177,8 +176,6 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         } else {
             showError("You must have both a Latitude and a Longitude");
         }
-
-//        presenter.getWeatherInformation(lat, lng);
     }
 
     //weather as string reference to broadcast
