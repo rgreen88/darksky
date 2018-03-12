@@ -124,6 +124,16 @@ public class DailyDatum {
     @Expose
     private Double apparentTemperatureMaxTime;
 
+    public DailyDatum(String icon, Float temperatureHigh, Float temperatureLow, Float apparentTemperatureHigh, Float apparentTemperatureLow, Float dewPoint, Float humidity) {
+        this.icon = icon;
+        this.temperatureHigh = temperatureHigh;
+        this.temperatureLow = temperatureLow;
+        this.apparentTemperatureHigh = apparentTemperatureHigh;
+        this.apparentTemperatureLow = apparentTemperatureLow;
+        this.dewPoint = dewPoint;
+        this.humidity = humidity;
+    }
+
     public Double getTime() {
         return time;
     }

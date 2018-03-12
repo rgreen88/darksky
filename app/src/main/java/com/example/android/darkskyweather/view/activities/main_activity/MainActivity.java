@@ -91,10 +91,20 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
         manager = new LinearLayoutManager(this);
         itemAnimator = new DefaultItemAnimator();
+        DailyDatum dailyDatum = new DailyDatum(
+                information.getCurrently().getIcon(),
+                information.getCurrently().getTemperature(),
+                information.getCurrently().getApparentTemperature(),
+                information.getCurrently().getTemperature(),
+                information.getCurrently().getApparentTemperature(),
+                information.getCurrently().getDewPoint(),
+                information.getCurrently().getHumidity());
+
+        weatherList.add(dailyDatum);
+        weatherList.addAll(information.getDaily().getData());
 
         //setting adapter
-        //weatherList.addAll(information.getDaily().getData());
-        weatherAdapter = new WeatherAdapter(information.getDaily().getData());
+        weatherAdapter = new WeatherAdapter(weatherList);
 
         weatherView.setAdapter(weatherAdapter);
         weatherView.setLayoutManager(manager);
