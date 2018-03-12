@@ -12,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,10 +26,11 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-public class MainActivity extends AppCompatActivity implements MainContract.View{
+public class MainActivity extends AppCompatActivity implements MainContract.View {
 
     // remember this next time
-    @Inject MainPresenter presenter;
+    @Inject
+    MainPresenter presenter;
 
     private RecyclerView weatherView;
     RecyclerView.ItemAnimator itemAnimator;
@@ -46,9 +48,9 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     MyReceiver myReceiver = new MyReceiver();
 
 
-    //lat long coordinates San Diego
-    double lng = 117.1611;
-    double lat = 32.7157;
+    //lat long coordinates in et
+    EditText et_lat;
+    EditText et_lng;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,15 +59,26 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
         setupDagger();
 
+
+        //lat long coordinates San Diego
+//        double lng = 117.1611;
+//        double lat = 32.7157;
+//        presenter.getWeatherInformation(lat, lng);
+
+
         //populate view
         presenter.addView(this);
         weatherView = findViewById(R.id.rv_weather);
 
         //retrieve weather info
-        presenter.getWeatherInformation(lat, lng);
+        //presenter.getWeatherInformation(lat, lng);
 
         //bind hyperlink textview to tv id
         credit = findViewById(R.id.tv_credit);
+
+        //bind et
+        et_lat = findViewById(R.id.et_lat);
+        et_lng = findViewById(R.id.et_lng);
 
         credit.setText(
                 Html.fromHtml(
@@ -77,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
     @Override
     public void showError(String error) {
-        Toast.makeText(this, "error", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -91,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
         manager = new LinearLayoutManager(this);
         itemAnimator = new DefaultItemAnimator();
-
+        weatherList.clear();
         //new dailydatum object pulling data from Currently to display current day
         DailyDatum dailyDatum = new DailyDatum(
                 information.getCurrently().getIcon(),
@@ -111,7 +124,6 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         weatherView.setAdapter(weatherAdapter);
         weatherView.setLayoutManager(manager);
         weatherView.setItemAnimator(itemAnimator);
-
 
 
     }
@@ -142,7 +154,31 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
     //refresh button
     public void getRefresh(View view) {
-        presenter.getWeatherInformation(32.7157, 117.1611);
+        //refresh reverts to lat long coordinates San Diego
+        double lng = 117.1611;
+        double lat = 32.7157;
+        presenter.getWeatherInformation(lat, lng);
+    }
+
+    //using edittext to set lat/lng to desired search
+    public void getCoodinates(View view) {
+        //conditional statement to check lat/lng values and calls to search for weather info
+        // by input lat/lng and converts string to double
+        if (!et_lat.getText().toString().equals("") && !et_lng.getText().toString().equals("")) {
+            double lat = Double.parseDouble(et_lat.getText().toString());
+            double lng = Double.parseDouble(et_lng.getText().toString());
+            if (lat > 90 || lat < -90) {
+                showError("Latitude can not be more then 90 or less than -90");
+            } else if (lng > 180 || lng < -180) {
+                showError("Longitude can not be more then 180 or less than -180");
+            } else {
+                presenter.getWeatherInformation(lat, lng);
+            }
+        } else {
+            showError("You must have both a Latitude and a Longitude");
+        }
+
+//        presenter.getWeatherInformation(lat, lng);
     }
 
     //weather as string reference to broadcast

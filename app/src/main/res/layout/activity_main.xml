@@ -7,7 +7,10 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_weather"
         android:layout_width="match_parent"
-        android:layout_height="300dp">
+        android:layout_margin="8dp"
+        android:layout_above="@id/btn_search"
+        android:layout_alignParentTop="true"
+        android:layout_height="wrap_content">
     </android.support.v7.widget.RecyclerView>
 
     <Button
@@ -27,4 +30,40 @@
         android:layout_margin= "24dp"
         android:text="@string/powered_by_dark_sky"
         android:layout_alignParentBottom="true"/>
+
+    <EditText
+        android:id="@+id/et_lat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btn_refresh"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="17dp"
+        android:ems="6"
+        android:inputType="numberDecimal"
+        android:hint="@string/latitude" />
+
+    <EditText
+        android:id="@+id/et_lng"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/et_lat"
+        android:layout_alignBottom="@+id/et_lat"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:ems="6"
+        android:hint="@string/longitude"
+        android:inputType="numberDecimal"
+        android:layout_above="@+id/btn_refresh"/>
+
+    <Button
+        android:id="@+id/btn_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btn_refresh"
+        android:layout_alignStart="@+id/btn_refresh"
+        android:layout_alignTop="@+id/et_lng"
+        android:text="@string/search"
+        android:layout_above="@+id/btn_refresh"
+        android:onClick="getCoodinates"/>
 </RelativeLayout>
