@@ -12,19 +12,19 @@
 
     <Button
         android:id="@+id/btn_refresh"
-        android:layout_below="@+id/rv_weather"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="getRefresh"
-        android:text="refresh"
-        android:layout_centerHorizontal="true"/>
+        android:text="@string/refresh"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/tv_credit"/>
 
     <TextView
         android:id="@+id/tv_credit"
-        android:text="Powered by Dark Sky"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/btn_refresh"
-        android:layout_marginTop="24dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_margin= "24dp"
+        android:text="@string/powered_by_dark_sky"
+        android:layout_alignParentBottom="true"/>
 </RelativeLayout>

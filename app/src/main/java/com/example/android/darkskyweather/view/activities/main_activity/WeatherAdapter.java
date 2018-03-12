@@ -47,12 +47,20 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
         String humidity = "Humidity: " + datum.getHumidity();
         String dewPoint = "Dew Point: " + datum.getDewPoint();
         String condition = datum.getIcon();
+        ImageView icon;
+//        Drawable myDrawable = icon.getDrawable();
 
         holder.high.setText(high);
         holder.low.setText(low);
         holder.humidity.setText(humidity);
         holder.dewPoint.setText(dewPoint);
         holder.condition.setText(condition);
+//        holder.icon.setImageDrawable(icon);
+
+        //setting condition to determine which image to load into iv
+//        if(icon.getDrawable().equals(condition) ){
+//            //do work here
+//        }
 
         //setting onClickListener in adapter
         holder.container.setOnClickListener(new View.OnClickListener() {
@@ -86,7 +94,7 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
         public ViewHolder(View itemView) {
             super(itemView);
 
-            icon = itemView.findViewById(R.id.iv_icon);
+            icon = itemView.findViewWithTag(R.drawable.cloudy);
             high = itemView.findViewById(R.id.tv_high);
             low = itemView.findViewById(R.id.tv_low);
             humidity = itemView.findViewById(R.id.tv_humidity);
