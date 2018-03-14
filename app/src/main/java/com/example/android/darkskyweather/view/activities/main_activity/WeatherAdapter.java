@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.android.darkskyweather.R;
@@ -55,9 +54,8 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
         holder.dewPoint.setText(dewPoint);
         holder.condition.setText(condition);
 
-
         //setting images from mipmap via picasso and if/else statements
-        if(datum.getIcon() == null){
+        if(datum.getIcon() != null){
             if(datum.getIcon().toLowerCase().contains("part")){
                 Picasso.with(holder.itemView.getContext())
                         .load(R.mipmap.partly_cloudy)
@@ -78,12 +76,12 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
                 Picasso.with(holder.itemView.getContext())
                         .load(R.mipmap.sunny)
                         .into(holder.icon);
-
             }
         }
+        Log.d(TAG, "# " + position);
 
-        //setting onClickListener in adapter
-        holder.container.setOnClickListener(new View.OnClickListener() {
+        //onClick for Recycler View
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent("weather");
@@ -92,8 +90,6 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
                 holder.itemView.getContext().sendBroadcast(intent);
             }
         });
-
-        Log.d(TAG, "# " + position);
     }
 
     @Override
@@ -109,18 +105,16 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
         TextView humidity;
         TextView dewPoint;
         TextView condition;
-        RelativeLayout container;
 
-        public ViewHolder(View itemView) {
+        public ViewHolder(final View itemView) {
             super(itemView);
 
-            icon = itemView.findViewWithTag(R.id.iv_icon);
+            icon = itemView.findViewById(R.id.iv_icon);
             high = itemView.findViewById(R.id.tv_high);
             low = itemView.findViewById(R.id.tv_low);
             humidity = itemView.findViewById(R.id.tv_humidity);
             dewPoint = itemView.findViewById(R.id.tv_dew_point);
             condition = itemView.findViewById(R.id.tv_condition);
-            container = itemView.findViewById(R.id.layout_relative);
         }
     }
 }
