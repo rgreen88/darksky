@@ -28,7 +28,7 @@ import javax.inject.Inject;
 
 public class MainActivity extends AppCompatActivity implements MainContract.View {
 
-    // remember this next time
+    //Injecting presenter into MainActivity
     @Inject
     MainPresenter presenter;
 
@@ -49,8 +49,8 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
 
     //lat long coordinates in et
-    EditText et_lat;
-    EditText et_lng;
+    EditText etLat;
+    EditText etLng;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,8 +76,8 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         credit = findViewById(R.id.tv_credit);
 
         //bind et
-        et_lat = findViewById(R.id.et_lat);
-        et_lng = findViewById(R.id.et_lng);
+        etLat = findViewById(R.id.et_lat);
+        etLng = findViewById(R.id.et_lng);
 
         credit.setText(
                 Html.fromHtml(
@@ -163,9 +163,9 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     public void getCoodinates(View view) {
         //conditional statement to check lat/lng values and calls to search for weather info
         // by input lat/lng and converts string to double. Adds error toasts for specific errors
-        if (!et_lat.getText().toString().equals("") && !et_lng.getText().toString().equals("")) {
-            double lat = Double.parseDouble(et_lat.getText().toString());
-            double lng = Double.parseDouble(et_lng.getText().toString());
+        if (!etLat.getText().toString().equals("") && !etLng.getText().toString().equals("")) {
+            double lat = Double.parseDouble(etLat.getText().toString());
+            double lng = Double.parseDouble(etLng.getText().toString());
             if (lat > 90 || lat < -90) {
                 showError("Latitude can not be more then 90 or less than -90");
             } else if (lng > 180 || lng < -180) {
