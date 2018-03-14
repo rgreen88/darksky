@@ -11,7 +11,6 @@ import com.example.android.darkskyweather.view.BaseView;
 public interface MainContract {
     interface View extends BaseView{
         void setupAdapter(WeatherInformation information);
-        void showDetailedInformation(String information);//when you click on day
     }
 
     interface Presenter extends BasePresenter<View>{

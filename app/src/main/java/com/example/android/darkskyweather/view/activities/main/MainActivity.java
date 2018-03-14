@@ -1,9 +1,5 @@
 package com.example.android.darkskyweather.view.activities.main;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -19,8 +15,8 @@ import android.widget.Toast;
 import com.example.android.darkskyweather.R;
 import com.example.android.darkskyweather.model.DailyDatum;
 import com.example.android.darkskyweather.model.WeatherInformation;
-import com.example.android.darkskyweather.view.activities.extended.ExtendedWeather;
 import com.example.android.darkskyweather.view.activities.main.injection.DaggerMainComponent;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,12 +37,6 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
     //TextView hyperlink
     TextView credit;
-
-    //IntentFilter for broadcast receiver
-    IntentFilter intentFilter = new IntentFilter("weather");
-
-    //setting up receiver
-    MyReceiver myReceiver = new MyReceiver();
 
     //lat long coordinates in et
     EditText etLat;
@@ -119,37 +109,15 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         weatherView.setItemAnimator(itemAnimator);
     }
 
-    //pushing information from DailyDatum to ExtendedWeather Activity
-    @Override
-    public void showDetailedInformation(String information) {
-
-        Intent intent = new Intent(this, ExtendedWeather.class);
-        intent.putExtra("weather", information);
-        this.startActivity(intent);
-    }
-
-    //registering and unregistering receiver
-    @Override
-    protected void onStart() {
-        super.onStart();
-        registerReceiver(myReceiver, intentFilter);
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        unregisterReceiver(myReceiver);
-    }
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
         presenter.removeView();
     }
 
-    //refresh button
+    //refresh button reverts to lat long coordinates San Diego
     public void getRefresh(View view) {
-        //refresh reverts to lat long coordinates San Diego
+
         double lng = 117.1611;
         double lat = 32.7157;
         presenter.getWeatherInformation(lat, lng);
@@ -172,15 +140,6 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
             }
         } else {
             showError("You must have both a Latitude and a Longitude");
-        }
-    }
-
-    //weather as string reference to broadcast
-    class MyReceiver extends BroadcastReceiver {
-
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            showDetailedInformation(intent.getStringExtra("weather"));
         }
     }
 }

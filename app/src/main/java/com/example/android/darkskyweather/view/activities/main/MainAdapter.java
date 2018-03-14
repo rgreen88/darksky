@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.android.darkskyweather.R;
 import com.example.android.darkskyweather.model.DailyDatum;
+import com.example.android.darkskyweather.view.activities.extended.ExtendedWeather;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
@@ -84,10 +85,10 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent("weather");
+                Intent intent = new Intent(holder.itemView.getContext(), ExtendedWeather.class);
                 Gson gson = new Gson(); //converting gson object to string
                 intent.putExtra("weather", gson.toJson(datum));
-                holder.itemView.getContext().sendBroadcast(intent);
+                holder.itemView.getContext().startActivity(intent);
             }
         });
     }
