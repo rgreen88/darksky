@@ -12,7 +12,7 @@ import dagger.Provides;
 @Module
 public class MainModule {
     @Provides
-    public MainPresenter mainPresenterProvides(){
+    public MainPresenter mainPresenterProvides() {
         return new MainPresenter();
     }
 }

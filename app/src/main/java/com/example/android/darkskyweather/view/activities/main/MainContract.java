@@ -9,11 +9,11 @@ import com.example.android.darkskyweather.view.BaseView;
  */
 
 public interface MainContract {
-    interface View extends BaseView{
+    interface View extends BaseView {
         void setupAdapter(WeatherInformation information);
     }
 
-    interface Presenter extends BasePresenter<View>{
+    interface Presenter extends BasePresenter<View> {
         void getWeatherInformation(double lat, double lng);
     }
 }

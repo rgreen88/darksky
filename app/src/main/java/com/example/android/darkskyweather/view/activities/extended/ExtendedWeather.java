@@ -34,9 +34,6 @@ public class ExtendedWeather extends AppCompatActivity {
         //set textviews
         apparentHigh.setText(appHigh);
         apparentLow.setText(appLow);
-
-
-
     }
 
     public void goBack(View view) {
@@ -46,5 +43,3 @@ public class ExtendedWeather extends AppCompatActivity {
 
     }
 }
-
-

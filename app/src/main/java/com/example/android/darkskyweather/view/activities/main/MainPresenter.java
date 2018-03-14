@@ -13,7 +13,7 @@ import retrofit2.Response;
  * Created by rynel on 3/8/2018.
  */
 
-public class MainPresenter implements MainContract.Presenter{
+public class MainPresenter implements MainContract.Presenter {
 
     private static final String TAG = "test";
     MainContract.View view;

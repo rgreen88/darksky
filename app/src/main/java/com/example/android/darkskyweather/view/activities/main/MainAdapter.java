@@ -34,8 +34,8 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
-        View view= LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.weather_view,viewGroup,false);
+        View view = LayoutInflater.from(viewGroup.getContext())
+                .inflate(R.layout.weather_view, viewGroup, false);
         return new ViewHolder(view);
     }
 
@@ -56,24 +56,24 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         holder.condition.setText(condition);
 
         //setting images from mipmap via picasso and if/else statements
-        if(datum.getIcon() != null){
-            if(datum.getIcon().toLowerCase().contains("part")){
+        if (datum.getIcon() != null) {
+            if (datum.getIcon().toLowerCase().contains("part")) {
                 Picasso.with(holder.itemView.getContext())
                         .load(R.mipmap.partly_cloudy)
                         .into(holder.icon);
-            }else if(datum.getIcon().toLowerCase().contains("cloud")){
+            } else if (datum.getIcon().toLowerCase().contains("cloud")) {
                 Picasso.with(holder.itemView.getContext())
                         .load(R.mipmap.cloudy)
                         .into(holder.icon);
-            }else if(datum.getIcon().toLowerCase().contains("snow")){
+            } else if (datum.getIcon().toLowerCase().contains("snow")) {
                 Picasso.with(holder.itemView.getContext())
                         .load(R.mipmap.snow)
                         .into(holder.icon);
-            }else if(datum.getIcon().toLowerCase().contains("rain")){
+            } else if (datum.getIcon().toLowerCase().contains("rain")) {
                 Picasso.with(holder.itemView.getContext())
                         .load(R.mipmap.rainy)
                         .into(holder.icon);
-            }else {
+            } else {
                 Picasso.with(holder.itemView.getContext())
                         .load(R.mipmap.sunny)
                         .into(holder.icon);

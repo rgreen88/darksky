@@ -6,5 +6,6 @@ package com.example.android.darkskyweather.view;
 
 public interface BaseView {
     void showError(String error);
+
     void setupDagger();
 }
