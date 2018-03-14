@@ -1,4 +1,4 @@
-package com.example.android.darkskyweather.view.activities.main_activity;
+package com.example.android.darkskyweather.view.activities.main;
 
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
@@ -23,11 +23,11 @@ import static android.content.ContentValues.TAG;
  * Created by rynel on 3/8/2018.
  */
 
-public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHolder> {
+public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
 
     private List<DailyDatum> dailyDatums = new ArrayList<>();
 
-    public WeatherAdapter(List<DailyDatum> dailyDatums) {
+    public MainAdapter(List<DailyDatum> dailyDatums) {
         this.dailyDatums = dailyDatums;
     }
 

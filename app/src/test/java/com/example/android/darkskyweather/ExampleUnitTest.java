@@ -1,7 +1,7 @@
 package com.example.android.darkskyweather;
 
 import com.example.android.darkskyweather.model.DailyDatum;
-import com.example.android.darkskyweather.view.activities.main_activity.WeatherAdapter;
+import com.example.android.darkskyweather.view.activities.main.MainAdapter;
 
 import org.junit.Test;
 
@@ -26,7 +26,7 @@ public class ExampleUnitTest {
 
     @Test
     public void testForFailure() {
-        WeatherAdapter tester = new WeatherAdapter(dailyDatums); // MyClass is tested
+        MainAdapter tester = new MainAdapter(dailyDatums); // MyClass is tested
 
         // assert statements
         assertEquals(0, tester.getItemCount());

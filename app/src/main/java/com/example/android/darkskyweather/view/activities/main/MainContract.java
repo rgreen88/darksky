@@ -1,4 +1,4 @@
-package com.example.android.darkskyweather.view.activities.main_activity;
+package com.example.android.darkskyweather.view.activities.main;
 
 import com.example.android.darkskyweather.model.WeatherInformation;
 import com.example.android.darkskyweather.view.BasePresenter;

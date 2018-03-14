@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.android.darkskyweather.view.activities.main_activity.ExtendedWeather">
+    tools:context="com.example.android.darkskyweather.view.activities.extended.ExtendedWeather">
 
     <TextView
         android:id="@+id/tv_apparent_high"

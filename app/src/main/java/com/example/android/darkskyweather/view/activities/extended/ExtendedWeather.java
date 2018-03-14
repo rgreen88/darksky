@@ -1,4 +1,4 @@
-package com.example.android.darkskyweather.view.activities.main_activity;
+package com.example.android.darkskyweather.view.activities.extended;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.example.android.darkskyweather.R;
 import com.example.android.darkskyweather.model.DailyDatum;
+import com.example.android.darkskyweather.view.activities.main.MainActivity;
 import com.google.gson.Gson;
 
 public class ExtendedWeather extends AppCompatActivity {

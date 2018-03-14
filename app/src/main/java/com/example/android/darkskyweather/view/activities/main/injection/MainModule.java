@@ -1,6 +1,6 @@
-package com.example.android.darkskyweather.view.injection.main_activity;
+package com.example.android.darkskyweather.view.activities.main.injection;
 
-import com.example.android.darkskyweather.view.activities.main_activity.MainPresenter;
+import com.example.android.darkskyweather.view.activities.main.MainPresenter;
 
 import dagger.Module;
 import dagger.Provides;

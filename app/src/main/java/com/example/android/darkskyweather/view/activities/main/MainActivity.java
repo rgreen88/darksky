@@ -1,4 +1,4 @@
-package com.example.android.darkskyweather.view.activities.main_activity;
+package com.example.android.darkskyweather.view.activities.main;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -19,8 +19,8 @@ import android.widget.Toast;
 import com.example.android.darkskyweather.R;
 import com.example.android.darkskyweather.model.DailyDatum;
 import com.example.android.darkskyweather.model.WeatherInformation;
-import com.example.android.darkskyweather.view.injection.main_activity.DaggerMainComponent;
-
+import com.example.android.darkskyweather.view.activities.extended.ExtendedWeather;
+import com.example.android.darkskyweather.view.activities.main.injection.DaggerMainComponent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     RecyclerView.ItemAnimator itemAnimator;
     RecyclerView.LayoutManager manager;
     private List<DailyDatum> weatherList = new ArrayList<>();
-    private WeatherAdapter weatherAdapter;
+    private MainAdapter mainAdapter;
 
     //TextView hyperlink
     TextView credit;
@@ -118,9 +118,9 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         weatherList.addAll(information.getDaily().getData());
 
         //setting adapter
-        weatherAdapter = new WeatherAdapter(weatherList);
+        mainAdapter = new MainAdapter(weatherList);
 
-        weatherView.setAdapter(weatherAdapter);
+        weatherView.setAdapter(mainAdapter);
         weatherView.setLayoutManager(manager);
         weatherView.setItemAnimator(itemAnimator);
 

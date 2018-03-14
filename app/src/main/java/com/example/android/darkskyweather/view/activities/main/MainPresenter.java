@@ -1,4 +1,4 @@
-package com.example.android.darkskyweather.view.activities.main_activity;
+package com.example.android.darkskyweather.view.activities.main;
 
 import android.support.annotation.NonNull;
 import android.util.Log;
