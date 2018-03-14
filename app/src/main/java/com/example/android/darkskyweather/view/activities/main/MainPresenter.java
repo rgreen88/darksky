@@ -44,6 +44,5 @@ public class MainPresenter implements MainContract.Presenter{
                 view.showError(t.getMessage());
             }
         }));
-
     }
 }

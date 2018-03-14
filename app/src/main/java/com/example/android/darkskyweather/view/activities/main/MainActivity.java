@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     @Inject
     MainPresenter presenter;
 
+    //RV
     private RecyclerView weatherView;
     RecyclerView.ItemAnimator itemAnimator;
     RecyclerView.LayoutManager manager;
@@ -47,7 +48,6 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     //setting up receiver
     MyReceiver myReceiver = new MyReceiver();
 
-
     //lat long coordinates in et
     EditText etLat;
     EditText etLng;
@@ -59,7 +59,6 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
         setupDagger();
 
-
         //populate view
         presenter.addView(this);
         weatherView = findViewById(R.id.rv_weather);
@@ -68,9 +67,6 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         double lng = 117.1611;
         double lat = 32.7157;
         presenter.getWeatherInformation(lat, lng);
-
-        //retrieve weather info
-        //presenter.getWeatherInformation(lat, lng);
 
         //bind hyperlink textview to tv id
         credit = findViewById(R.id.tv_credit);
@@ -83,8 +79,6 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
                 Html.fromHtml(
                         "<a href=\"https://darksky.net/poweredby/\">Powered by Dark Sky</a> "));
         credit.setMovementMethod(LinkMovementMethod.getInstance());
-
-
     }
 
     @Override
@@ -104,6 +98,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         manager = new LinearLayoutManager(this);
         itemAnimator = new DefaultItemAnimator();
         weatherList.clear();
+
         //new dailydatum object pulling data from Currently to display current day
         DailyDatum dailyDatum = new DailyDatum(
                 information.getCurrently().getIcon(),
@@ -119,12 +114,9 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
         //setting adapter
         mainAdapter = new MainAdapter(weatherList);
-
         weatherView.setAdapter(mainAdapter);
         weatherView.setLayoutManager(manager);
         weatherView.setItemAnimator(itemAnimator);
-
-
     }
 
     //pushing information from DailyDatum to ExtendedWeather Activity
@@ -134,14 +126,12 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         Intent intent = new Intent(this, ExtendedWeather.class);
         intent.putExtra("weather", information);
         this.startActivity(intent);
-
     }
 
     //registering and unregistering receiver
     @Override
     protected void onStart() {
         super.onStart();
-
         registerReceiver(myReceiver, intentFilter);
     }
 
@@ -149,6 +139,12 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     protected void onStop() {
         super.onStop();
         unregisterReceiver(myReceiver);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        presenter.removeView();
     }
 
     //refresh button
@@ -161,6 +157,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
     //using edittext to set lat/lng to desired search
     public void getCoodinates(View view) {
+
         //conditional statement to check lat/lng values and calls to search for weather info
         // by input lat/lng and converts string to double. Adds error toasts for specific errors
         if (!etLat.getText().toString().equals("") && !etLng.getText().toString().equals("")) {
@@ -183,9 +180,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
         @Override
         public void onReceive(Context context, Intent intent) {
-
             showDetailedInformation(intent.getStringExtra("weather"));
-
         }
     }
 }
